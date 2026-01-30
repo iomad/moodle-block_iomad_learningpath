@@ -22,6 +22,9 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+use local_iomad\{company, iomad};
+use local_iomad\custom_context\context_company;
+
 require_once(dirname(__FILE__) . '/../../config.php');
 require_once(dirname(__FILE__) . '/lib.php');
 
@@ -32,11 +35,7 @@ $systemcontext = context_system::instance();
 
 // Set the companyid
 $companyid = iomad::get_my_companyid($systemcontext);
-$companycontext = \core\context\company::instance($companyid);
+$companycontext = context_company::instance($companyid);
 $company = new company($companyid);
 
-<<<<<<<< HEAD:public/local/iomad_learningpath/admin.php
 iomad::require_capability('local/iomad_learningpath_manage', $companycontext);
-========
-local_iomad\iomad::require_capability('block/iomad_learningpath_manage', $companycontext);
->>>>>>>> 14a4ae7d261 (IOMAD: moved local/iomad_learningpath content to blocks/iomad_learningpath - #2524):public/blocks/iomad_learningpath/admin.php
